@@ -1,20 +1,17 @@
-import MyCard from "@/components/ui/Card";
+import {Card, CardHeader, CardBody} from "@nextui-org/card";
+import Image from "next/image";
+
 import {AboutData} from "@/lib/AboutData";
+import AboutCard from "@/components/ui/cards/AboutCard";
+
 export default function About(){
     return (
-        <main>
-            <div className={"m-10 p-5 grid gap-5 place-items-center justify-center grid-cols-1 md:grid-cols-3 md:grid-rows-2"}>
-                {AboutData.map((about, index) => (
-                    <div className={"md:row-span-2 md:z-10"} key={index}>
-                    <MyCard
-                        title={about.title}
-                        src={about.src}
-                        description={about.description}
-                        icon={about.icon}
-                        key={index}
-                    /></div>
-                ))}
-            </div>
+        <main className={"m-3 p-2 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4"}>
+            {
+                AboutData.map((about, key) => (
+                    <AboutCard key={key} {...about} />
+                ))
+            }
         </main>
     );
 }
